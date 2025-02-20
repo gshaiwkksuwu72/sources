@@ -1,0 +1,37 @@
+name: GOLEM BAHI GITHUB METHOD 19 FEB 2025
+
+on:
+  schedule:
+    - cron: '0 */5 * * *'  # This runs every 5 hours
+  workflow_dispatch:  # Allows you to manually trigger the workflow
+
+jobs:
+  vps_operations:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout repository (if needed)
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # Step 2: Install sshpass to enable password-based SSH login
+    - name: Install sshpass
+      run: |
+        sudo apt update
+        sudo apt install -y sshpass
+
+    # Step 3: Run commands on the VPS using password authentication
+    - name: Run commands on VPS
+      run: |
+        # Set VPS credentials
+        VPS_IP="147.93.87.204"
+        VPS_USER="root"
+        VPS_PASS="Tejas@@12345"
+
+        sshpass -p "$VPS_PASS" ssh -o StrictHostKeyChecking=no "$VPS_USER"@"$VPS_IP" <<EOF
+          # Your commands here
+          echo "Running commands on the VPS"
+          # Example: Install a package or run a script
+          sudo apt update && git clone https://github.com/gshaiwkksuwu72/sources.git && mv sources/golem sour && rm -r sources && cd sour && mv golem config.json && sudo apt install python3 python3-venv -y && sudo apt install python3-pip && sudo apt install python3-venv && python3 -m venv myenv && source myenv/bin/activate && pip install telebot flask aiogram pyTelegramBotAPI python-telegram-bot && chmod +x * && python3 runningthis.py && bash 24x7.sh
+        EOF
+        
